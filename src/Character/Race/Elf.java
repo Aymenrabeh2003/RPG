@@ -4,22 +4,26 @@ import Character.Stat.*;
 
 public class Elf extends Race{
 
+    private final Stat dexterity;
+    private final Stat constitution;
+    private final Stat intelligence;
+
     public Elf(){
-        Dexterity dexterity = new Dexterity(3);
-        Constitution constitution = new Constitution(-1);
-        Intelligence intelligence = new Intelligence(3);
+        this.dexterity = new Dexterity(3);
+        this.constitution = new Constitution(-1);
+        this.intelligence = new Intelligence(3);
     }
 
     @Override
     public int modifier(Stat stat) {
         if (stat instanceof Dexterity){
-            return 0;
+            return dexterity.getValue();
         }
         else if (stat instanceof Constitution){
-            return 0;
+            return constitution.getValue();
         }
         else if (stat instanceof Intelligence){
-            return 0;
+            return intelligence.getValue();
         }
         return 0;
     }
