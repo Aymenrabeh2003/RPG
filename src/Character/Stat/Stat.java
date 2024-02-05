@@ -22,4 +22,8 @@ public abstract class Stat {
     public String toString(){
         return "Valor: "+value;
     }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
 }

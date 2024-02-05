@@ -3,18 +3,33 @@ package Character.Race;
 import Character.Stat.*;
 
 public class Orc extends Race {
+    int valueStrength = 5;
+    int valueConstitution = 3;
+    int valueIntelligence = -3;
     private final Stat strength;
     private final Stat constitution;
     private final Stat intelligence;
 
-    private int valueStrength = 5;
-    private int valueConstitution = 3;
-    private int valueIntelligence = -3;
+    public Orc(Stat strength, Stat constitution, Stat intelligence) {
 
-    public Orc() {
-        this.strength = new Strength(valueStrength);
-        this.constitution = new Constitution(valueConstitution);
-        this.intelligence = new Intelligence(valueIntelligence);
+        strength = new Strength(valueStrength);
+        this.strength = strength;
+        constitution = new Constitution(valueConstitution);
+        this.constitution = constitution;
+        intelligence = new Intelligence(valueIntelligence);
+        this.intelligence = intelligence;
+    }
+
+    public int getStrengthValue() {
+        return valueStrength;
+    }
+
+    public int getConstitutionValue() {
+        return valueConstitution;
+    }
+
+    public int getIntelligenceValue() {
+        return valueIntelligence;
     }
 
     @Override
