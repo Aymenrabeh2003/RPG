@@ -10,14 +10,11 @@ public class Orc extends Race {
     private final Stat constitution;
     private final Stat intelligence;
 
-    public Orc(Stat strength, Stat constitution, Stat intelligence) {
+    public Orc() {
 
         strength = new Strength(valueStrength);
-        this.strength = strength;
         constitution = new Constitution(valueConstitution);
-        this.constitution = constitution;
         intelligence = new Intelligence(valueIntelligence);
-        this.intelligence = intelligence;
     }
 
     public int getStrengthValue() {

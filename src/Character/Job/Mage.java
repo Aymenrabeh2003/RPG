@@ -10,10 +10,10 @@ public class Mage extends Job{
     Stat statOfDexterity = dexterity;
     @Override
     public int modifier(Stat stat) {
-        if (stat instanceof Constitution){
+        if (stat instanceof Intelligence){
             return statOfIntelligence.getValue();
         }
-        else if (stat instanceof Strength){
+        else if (stat instanceof Dexterity){
             return statOfDexterity.getValue();
         }
         return 0;

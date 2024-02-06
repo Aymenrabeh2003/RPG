@@ -14,4 +14,6 @@ public abstract class Job {
     public String toString(){
        return this.getClass().getSimpleName();
     }
+
+
 }
