@@ -15,6 +15,8 @@ public class Characters implements IDamageable{
     private final Stat constitution;
     private final Stat intelligence;
 
+    private double currentHealth;
+
     public Characters(String name, Race race, Job job) {
         this.name = name;
         this.race = race;
@@ -23,6 +25,7 @@ public class Characters implements IDamageable{
         this.dexterity = new Dexterity(5);
         this.constitution = new Constitution(5);
         this.intelligence = new Intelligence(5);
+        this.currentHealth = maxHealth();
     }
 
     public String getName() {
@@ -72,29 +75,37 @@ public class Characters implements IDamageable{
 
     public double health() {
 
-        return maxHealth();
+        return currentHealth;
     }
 
     @Override
     public boolean isDead() {
-        return health() == 0;
+        return currentHealth <= 0;
     }
 
     @Override
     public void receivesDamage(double amount) {
-        double health = health();
-        health -= amount;
-        System.out.println(getName()+" received "+amount+" damage. "+health+"/"+maxHealth());
+        currentHealth -= amount;
+        if (currentHealth < 0) {
+            currentHealth = 0;
+        }
+        System.out.println(getName()+" received "+amount+" damage. "+currentHealth+"/"+maxHealth());
     }
 
     @Override
     public void heals(double amount) {
-        double health = health();
-        health += amount;
-        System.out.println(getName()+" heals "+amount+" life. "+health+"/"+maxHealth());
+        currentHealth += amount;
+        if (currentHealth > maxHealth()){
+            currentHealth = maxHealth();
+        }
+        System.out.println(getName()+" heals "+amount+" life. "+currentHealth+"/"+maxHealth());
+
     }
 
     public void consumes(IConsumable consumable) {
+
+        consumable.consumedBy(this);
+        System.out.println(getName()+" Consumed: " + consumable.getClass().getSimpleName());
 
     }
 
@@ -102,6 +113,6 @@ public class Characters implements IDamageable{
     public String toString() {
         return "My name is " + getName() + ". I’m an " + getRace() + " " + getJob() + " My stats are: Strength: " + getStreng() +
                 "\nDexterity: " + getDext() + " Constitution: " + getConsti() + " Intelligence: " + getIntell() +
-                " Velocity: " + velocity() + " Power: " + power() + " Magic: " + magic() + " Health: " + maxHealth() + "";
+                " Velocity: " + velocity() + " Power: " + power() + " Magic: " + magic() + " Actual Health: " + health() + "";
     }
 }

@@ -1,17 +1,17 @@
 import Character.Job.Job;
 import Character.Job.Mage;
-import Character.Race.Humano;
 import Character.Race.Orc;
-import Character.Stat.*;
 import Character.Characters;
+import Item.Food.Food;
+import Item.Food.Venon;
 
 public class Main {
 
     public static void main(String[] args) {
 
         Orc orco1 = new Orc();
-        Humano humano1 = new Humano();
         Job mage = new Mage();
+        Food food = new Venon();
 
 
 
@@ -23,6 +23,7 @@ public class Main {
         Characters charac = new Characters("Este",orco1,mage);
        // System.out.println(charac.velocity());
 
+        charac.consumes(food);
         System.out.println(charac);
 
     }

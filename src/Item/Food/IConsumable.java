@@ -1,5 +1,6 @@
 package Item.Food;
-
+import Character.Characters;
 public interface IConsumable {
-    void consumedBy(Character character);
+    void consumedBy(Characters character);
+
 }
