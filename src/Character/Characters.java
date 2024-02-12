@@ -3,19 +3,26 @@ package Character;
 import Character.Job.Job;
 import Character.Race.Race;
 import Character.Stat.*;
+import Item.Armor.Armor;
 import Item.Food.IConsumable;
+import Item.Jewellery.Jewellery;
+import Item.Weapons.Weapons;
+
+import java.util.WeakHashMap;
 
 public class Characters implements IDamageable{
 
     private final String name;
     private final Race race;
     private final Job job;
-    private final Stat strength;
-    private final Stat dexterity;
-    private final Stat constitution;
-    private final Stat intelligence;
-
+    private Stat strength;
+    private Stat dexterity;
+    private Stat constitution;
+    private Stat intelligence;
     private double currentHealth;
+    private Weapons weapon;
+    private Armor armor;
+    private Jewellery jewelry;
 
     public Characters(String name, Race race, Job job) {
         this.name = name;
@@ -51,9 +58,21 @@ public class Characters implements IDamageable{
     public int getConsti() {
         return constitution.getValue() + race.modifier(constitution) + job.modifier(constitution);
     }
-
     public int getIntell() {
         return intelligence.getValue() + race.modifier(intelligence) + job.modifier(intelligence);
+    }
+
+    public int setConsti(int points){
+        return getConsti() + points;
+    }
+    public int setStreng(int points){
+        return getStreng() + points;
+    }
+    public int setDext(int points){
+        return getDext() + points;
+    }
+    public int setIntell(int points){
+        return getIntell() + points;
     }
 
     public double velocity() {
@@ -71,6 +90,10 @@ public class Characters implements IDamageable{
     @Override
     public double maxHealth() {
         return getConsti() * 25;
+    }
+
+    public double setMaxHealth(double points){
+        return maxHealth() + points;
     }
 
     public double health() {
@@ -108,6 +131,31 @@ public class Characters implements IDamageable{
         System.out.println(getName()+" Consumed: " + consumable.getClass().getSimpleName());
 
     }
+
+    public void equipWeapon(Weapons weapon) {
+        if (this.weapon != null) {
+            this.weapon.removeEffects(this);
+        }
+        this.weapon = weapon;
+        weapon.applyEffects(this);
+    }
+
+    public void equipArmor(Armor armor) {
+        if (this.armor != null) {
+            this.armor.removeEffects(this);
+        }
+        this.armor = armor;
+        armor.applyEffects(this);
+    }
+
+    public void equipJewelry(Jewellery jewelry) {
+        if (this.jewelry != null) {
+            this.jewelry.removeEffects(this);
+        }
+        this.jewelry = jewelry;
+        jewelry.applyEffects(this);
+    }
+
 
     @Override
     public String toString() {
