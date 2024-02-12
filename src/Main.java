@@ -4,6 +4,8 @@ import Character.Race.Orc;
 import Character.Characters;
 import Item.Food.Food;
 import Item.Food.Venon;
+import Item.Jewellery.BaraDeLaVerdad;
+import Item.Jewellery.Jewellery;
 
 public class Main {
 
@@ -12,6 +14,7 @@ public class Main {
         Orc orco1 = new Orc();
         Job mage = new Mage();
         Food food = new Venon();
+        Jewellery j1 = new BaraDeLaVerdad();
 
 
 
@@ -24,6 +27,9 @@ public class Main {
        // System.out.println(charac.velocity());
 
         charac.consumes(food);
+        System.out.println(charac);
+        System.out.println();
+        charac.equipJewelry(j1);
         System.out.println(charac);
 
     }

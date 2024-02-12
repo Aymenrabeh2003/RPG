@@ -7,17 +7,7 @@ import Character.*;
 
 public abstract class Armor implements Equipment {
 
-    @Override
-    public void applyEffects(Characters character) {
-        int constit = character.getConsti();
-        int newConstit = constit + points;
-        character.setConsti(newConstit);
-    }
-
-    @Override
-    public void removeEffects(Characters character) {
-        int constit = character.getConsti();
-        int newConstit = constit - points;
-        character.setConsti(newConstit);
-    }
+    public int points = 2;
+    public abstract void applyEffects(Characters character);
+    public abstract void removeEffects(Characters character);
 }

@@ -4,16 +4,7 @@ import Character.*;
 
 public abstract class Weapons implements Equipment{
 
-    public void applyEffects(Characters character) {
-        int streng = character.getStreng();
-        int newStreng = streng + points;
-        character.setConsti(newStreng);
-    }
-
-    @Override
-    public void removeEffects(Characters character) {
-        int streng = character.getStreng();
-        int newStreng = streng - points;
-        character.setConsti(newStreng);
-    }
+    public int points = 4;
+    public abstract void applyEffects(Characters character);
+    public abstract void removeEffects(Characters character);
 }

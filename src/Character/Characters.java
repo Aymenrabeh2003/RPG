@@ -61,7 +61,29 @@ public class Characters implements IDamageable{
     public int getIntell() {
         return intelligence.getValue() + race.modifier(intelligence) + job.modifier(intelligence);
     }
+    public void equipWeapon(Weapons weapon) {
+        if (this.weapon != null) {
+            this.weapon.removeEffects(this);
+        }
+        this.weapon = weapon;
+        weapon.applyEffects(this);
+    }
 
+    public void equipArmor(Armor armor) {
+        if (this.armor != null) {
+            this.armor.removeEffects(this);
+        }
+        this.armor = armor;
+        armor.applyEffects(this);
+    }
+
+    public void equipJewelry(Jewellery jewelry) {
+        if (this.jewelry != null) {
+            this.jewelry.removeEffects(this);
+        }
+        this.jewelry = jewelry;
+        jewelry.applyEffects(this);
+    }
     public int setConsti(int points){
         return getConsti() + points;
     }
@@ -90,10 +112,6 @@ public class Characters implements IDamageable{
     @Override
     public double maxHealth() {
         return getConsti() * 25;
-    }
-
-    public double setMaxHealth(double points){
-        return maxHealth() + points;
     }
 
     public double health() {
@@ -132,29 +150,7 @@ public class Characters implements IDamageable{
 
     }
 
-    public void equipWeapon(Weapons weapon) {
-        if (this.weapon != null) {
-            this.weapon.removeEffects(this);
-        }
-        this.weapon = weapon;
-        weapon.applyEffects(this);
-    }
 
-    public void equipArmor(Armor armor) {
-        if (this.armor != null) {
-            this.armor.removeEffects(this);
-        }
-        this.armor = armor;
-        armor.applyEffects(this);
-    }
-
-    public void equipJewelry(Jewellery jewelry) {
-        if (this.jewelry != null) {
-            this.jewelry.removeEffects(this);
-        }
-        this.jewelry = jewelry;
-        jewelry.applyEffects(this);
-    }
 
 
     @Override
