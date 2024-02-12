@@ -79,22 +79,30 @@ public class Characters implements IDamageable{
 
     public void equipJewelry(Jewellery jewelry) {
         if (this.jewelry != null) {
+            System.out.println("Ya esta equipado");
             this.jewelry.removeEffects(this);
         }
         this.jewelry = jewelry;
         jewelry.applyEffects(this);
     }
-    public int setConsti(int points){
-        return getConsti() + points;
+    public void setConsti(int points) {
+        int newConstitutionValue = this.constitution.getValue() + points;
+        this.constitution.setValue(newConstitutionValue);
     }
-    public int setStreng(int points){
-        return getStreng() + points;
+
+    public void setStreng(int points) {
+        int newStrengthValue = this.strength.getValue() + points;
+        this.strength.setValue(newStrengthValue);
     }
-    public int setDext(int points){
-        return getDext() + points;
+
+    public void setDext(int points) {
+        int newDexterityValue = this.dexterity.getValue() + points;
+        this.dexterity.setValue(newDexterityValue);
     }
-    public int setIntell(int points){
-        return getIntell() + points;
+
+    public void setIntell(int points) {
+        int newIntelligenceValue = this.intelligence.getValue() + points;
+        this.intelligence.setValue(newIntelligenceValue);
     }
 
     public double velocity() {

@@ -6,6 +6,8 @@ import Item.Food.Food;
 import Item.Food.Venon;
 import Item.Jewellery.BaraDeLaVerdad;
 import Item.Jewellery.Jewellery;
+import Item.Weapons.Espada;
+import Item.Weapons.Weapons;
 
 public class Main {
 
@@ -15,21 +17,16 @@ public class Main {
         Job mage = new Mage();
         Food food = new Venon();
         Jewellery j1 = new BaraDeLaVerdad();
-
-
-
-       int valor = orco1.getConstitutionValue();
-
-
-     //  System.out.println(valor);
+        Weapons sword = new Espada();
 
         Characters charac = new Characters("Este",orco1,mage);
-       // System.out.println(charac.velocity());
 
         charac.consumes(food);
         System.out.println(charac);
         System.out.println();
         charac.equipJewelry(j1);
+        System.out.println(charac);
+        charac.equipWeapon(sword);
         System.out.println(charac);
 
     }
